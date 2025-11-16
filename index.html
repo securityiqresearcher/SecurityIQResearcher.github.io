@@ -25,19 +25,25 @@
             font-weight: 100;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             letter-spacing: 0.5px;
-            line-height: 1.2;
+        }
+        .security-items {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
     </style>
 </head>
 <body>
     <div class="top-left">
-        Assetlinks Exposure<br>
-        GH Actions Secrets<br>
-        Permissive CORS Misconfiguration<br>
-        CAPTCHA Bypass<br>
-        GraphQL Info Leak<br>
-        Session Fixation<br>
-        WP User Enum
+        <div class="security-items">
+            <div>Assetlinks Exposure</div>
+            <div>GH Actions Secrets</div>
+            <div>Permissive CORS Misconfiguration</div>
+            <div>CAPTCHA Bypass</div>
+            <div>GraphQL Info Leak</div>
+            <div>Session Fixation</div>
+            <div>WP User Enum</div>
+        </div>
     </div>
     Hello World :), SecurityIQResearcher!
 </body>
