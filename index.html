@@ -12,55 +12,42 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
         
         .main-text {
             font-size: 3em;
             text-align: center;
             z-index: 2;
-            position: relative;
         }
         
-        .orbit-container {
+        .circle-container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             z-index: 1;
-        }
-        
-        .orbit {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation: rotate 20s linear infinite;
         }
         
         .vulnerability {
             position: absolute;
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: rgba(255, 255, 255, 0.5); /* 50% opacity */
             font-weight: 100;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             white-space: nowrap;
             transform-origin: center;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            text-align: center;
         }
         
         .privacy-link {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            font-size: 0.3em;
+            font-size: 0.10em;
             color: #666;
             z-index: 3;
         }
@@ -76,10 +63,8 @@
         Hello World :), SecurityIQResearcher!
     </div>
     
-    <div class="orbit-container">
-        <div class="orbit">
-            <!-- Vulnerabilities will be positioned here by JavaScript -->
-        </div>
+    <div class="circle-container" id="circleContainer">
+        <!-- Vulnerabilities will be positioned here by JavaScript -->
     </div>
     
     <div class="privacy-link">
@@ -99,8 +84,8 @@
             "DOM XSS innerHTML"
         ];
         
-        const orbit = document.querySelector('.orbit');
-        const radius = 250; // Orbit radius
+        const container = document.getElementById('circleContainer');
+        const radius = 250; // Circle radius
         const angleStep = (2 * Math.PI) / vulnerabilities.length;
         
         vulnerabilities.forEach((vuln, index) => {
@@ -113,9 +98,9 @@
             vulnElement.textContent = vuln;
             vulnElement.style.left = `calc(50% + ${x}px)`;
             vulnElement.style.top = `calc(50% + ${y}px)`;
-            vulnElement.style.transform = `translate(-50%, -50%) rotate(${-angle}rad)`;
+            vulnElement.style.transform = `translate(-50%, -50%)`;
             
-            orbit.appendChild(vulnElement);
+            container.appendChild(vulnElement);
         });
     </script>
 </body>
