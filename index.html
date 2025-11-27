@@ -12,40 +12,111 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-size: 3em;
-            text-align: center;
+            overflow: hidden;
             position: relative;
         }
-        .top-left {
+        
+        .main-text {
+            font-size: 3em;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .orbit-container {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 0.35em;
-            color: #aaa;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            z-index: 1;
+        }
+        
+        .orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .vulnerability {
+            position: absolute;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5); /* 50% opacity */
             font-weight: 100;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            letter-spacing: 0.5px;
-            line-height: 1.3;
-            text-align: left;
+            white-space: nowrap;
+            transform-origin: center;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .privacy-link {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.3em;
+            color: #666;
+            z-index: 3;
+        }
+        
+        a {
+            color: #666;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="top-left">
-    Assetlinks Exposure<br>
-    GH Actions Secrets<br>
-    Permissive CORS Misconfiguration<br>
-    CAPTCHA Bypass<br>
-    GraphQL Info Leak<br>
-    Session Fixation<br>
-    WP User Enum<br>
-    CFEngine Auth Bypass<br>
-    DOM XSS innerHTML
-</div>
-    Hello World :), SecurityIQResearcher!
-<div style="position: absolute; bottom: 20px; right: 20px; font-size: 0.3em; color: #666;">
-    <a href="privacy-legal.html" style="color: #666; text-decoration: none;">Privacy & Legal</a>
-</div>
-</div>
+    <div class="main-text">
+        Hello World :), SecurityIQResearcher!
+    </div>
+    
+    <div class="orbit-container">
+        <div class="orbit">
+            <!-- Vulnerabilities will be positioned here by JavaScript -->
+        </div>
+    </div>
+    
+    <div class="privacy-link">
+        <a href="privacy-legal.html">Privacy & Legal</a>
+    </div>
+
+    <script>
+        const vulnerabilities = [
+            "Assetlinks Exposure",
+            "GH Actions Secrets", 
+            "Permissive CORS Misconfiguration",
+            "CAPTCHA Bypass",
+            "GraphQL Info Leak",
+            "Session Fixation", 
+            "WP User Enum",
+            "CFEngine Auth Bypass",
+            "DOM XSS innerHTML"
+        ];
+        
+        const orbit = document.querySelector('.orbit');
+        const radius = 250; // Orbit radius
+        const angleStep = (2 * Math.PI) / vulnerabilities.length;
+        
+        vulnerabilities.forEach((vuln, index) => {
+            const angle = index * angleStep;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+            
+            const vulnElement = document.createElement('div');
+            vulnElement.className = 'vulnerability';
+            vulnElement.textContent = vuln;
+            vulnElement.style.left = `calc(50% + ${x}px)`;
+            vulnElement.style.top = `calc(50% + ${y}px)`;
+            vulnElement.style.transform = `translate(-50%, -50%) rotate(${-angle}rad)`;
+            
+            orbit.appendChild(vulnElement);
+        });
+    </script>
 </body>
 </html>
