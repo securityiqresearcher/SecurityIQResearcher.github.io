@@ -3,83 +3,307 @@
 <head>
     <title>Privacy & Legal - Security IQ Researcher</title>
     <style>
-        body { 
-            background-color: black; 
-            color: white; 
-            font-family: Arial, sans-serif; 
-            margin: 40px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .terminal {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 50px auto;
+            border: 1px solid #00ff41;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .terminal-header {
+            background: #001a00;
+            padding: 10px;
+            border-bottom: 1px solid #00ff41;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
         }
-        .container { 
-            max-width: 700px; 
-            text-align: left;
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
         }
-        h1 { color: #aaa; font-size: 2em; text-align: center; }
-        h2 { color: #ccc; font-size: 1.3em; margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 5px; }
-        p, li { font-size: 1.1em; line-height: 1.6; }
-        ul { padding-left: 20px; }
-        .highlight { background-color: #1a1a1a; padding: 15px; border-left: 3px solid #444; margin: 15px 0; }
-        a { color: #ccc; text-decoration: none; font-size: 0.9em; text-align: center; display: block; margin-top: 30px; }
-        .separator { height: 2px; background: #333; margin: 40px 0; }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .close { background: #ff5f56; }
+        .minimize { background: #ffbd2e; }
+        .maximize { background: #27ca3f; }
+
+        .terminal-title {
+            margin-left: 20px;
+            color: #00ff41;
+            font-size: 0.9em;
+        }
+
+        .terminal-body {
+            padding: 30px;
+            min-height: 400px;
+        }
+
+        .command-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .prompt {
+            color: #00ff41;
+            margin-right: 10px;
+        }
+
+        .command {
+            color: #ffffff;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .policy-content {
+            color: #cccccc;
+            line-height: 1.6;
+            margin: 20px 0;
+            border-left: 2px solid #00ff41;
+            padding-left: 15px;
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #001a00;
+            border-top: 1px solid #00ff41;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8em;
+        }
+
+        .home-link {
+            color: #00ff41;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin-right: 20px;
+        }
+
+        .home-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        }
+
+        .scan-animation {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 255, 65, 0.1), 
+                transparent);
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .glitch-text {
+            position: relative;
+            animation: glitch 5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        .status-left {
+            display: flex;
+            gap: 30px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy & Legal Information</h1>
-        
-        <!-- Privacy Policy Section -->
-        <h2>Privacy Policy</h2>
-        
-        <h3>Information Collection</h3>
-        <p>This website operates on a strict no-data-collection principle. We do not:</p>
-        <ul>
-            <li>Collect personal information</li>
-            <li>Use tracking cookies or analytics</li>
-            <li>Store user data or browsing history</li>
-            <li>Share information with third parties</li>
-        </ul>
-
-        <h3>Server Logs</h3>
-        <p>Basic server logs may include IP addresses for security monitoring and abuse prevention. These logs are automatically rotated and deleted within 30 days.</p>
-
-        <h3>External Links</h3>
-        <p>This website may contain links to external sites. We are not responsible for the privacy practices or content of these external websites.</p>
-
-        <div class="separator"></div>
-
-        <!-- Legal Disclaimer Section -->
-        <h2>Legal Disclaimer</h2>
-        
-        <h3>Purpose of Content</h3>
-        <p>All content on this website is provided for educational and informational purposes only. The security research and findings presented are intended to:</p>
-        <ul>
-            <li>Educate security professionals</li>
-            <li>Raise awareness about security vulnerabilities</li>
-            <li>Promote responsible disclosure practices</li>
-            <li>Advance cybersecurity knowledge</li>
-        </ul>
-
-        <h3>Ethical Research</h3>
-        <p>All security research conducted follows strict ethical guidelines:</p>
-        <ul>
-            <li>Research is performed only on authorized systems</li>
-            <li>Proper disclosure procedures are followed</li>
-            <li>Vulnerabilities are reported to affected organizations</li>
-            <li>No malicious exploitation of discovered vulnerabilities</li>
-        </ul>
-
-        <div class="highlight">
-            <strong>Important Notice:</strong> The techniques and findings discussed on this website should only be used on systems you own or have explicit permission to test. Unauthorized testing of systems is illegal.
+    <canvas class="matrix-bg" id="matrixBg"></canvas>
+    
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <div class="terminal-btn close"></div>
+                <div class="terminal-btn minimize"></div>
+                <div class="terminal-btn maximize"></div>
+            </div>
+            <div class="terminal-title">root@securityiqresearcher:~/legal</div>
         </div>
-
-        <h3>No Warranty</h3>
-        <p>Information is provided "as is" without warranty of any kind. We are not liable for any damages resulting from the use of information on this website.</p>
-
-        <a href="index.html">← Back to Home</a>
+        
+        <div class="terminal-body">
+            <div class="command-line">
+                <span class="prompt">$</span>
+                <span class="command typewriter">cat privacy_legal.txt</span>
+            </div>
+            
+            <div class="glitch-text" style="font-size: 1.5em; margin-bottom: 20px;">
+                Privacy & Legal Policy
+            </div>
+            
+            <div class="command-line">
+                <span class="prompt">$</span>
+                <span class="command" style="animation-delay: 1s;">policy_status --display</span>
+            </div>
+            
+            <div class="policy-content">
+                <strong>Authorization:</strong> All security testing conducted with explicit written authorization. No unauthorized access.
+            </div>
+            
+            <div class="policy-content">
+                <strong>Data Privacy:</strong> This website does not collect, store, or process any personal data. No cookies or tracking.
+            </div>
+            
+            <div class="policy-content">
+                <strong>Legal Compliance:</strong> Operations comply with CFAA, GDPR, and responsible disclosure protocols.
+            </div>
+            
+            <div class="policy-content">
+                <strong>Ethical Research:</strong> All findings disclosed privately to organizations with adequate remediation time.
+            </div>
+            
+            <div class="scan-animation"></div>
+        </div>
     </div>
+    
+    <div class="status-bar">
+        <div class="status-left">
+            <div>POLICY: <span style="color: #00ff41;">ACTIVE</span></div>
+            <div>COMPLIANCE: <span style="color: #00ff41;">VERIFIED</span></div>
+        </div>
+        
+        <div class="social-links">
+            <a href="index.html" class="home-link">[RETURN TO TERMINAL]</a>
+            
+            <!-- Same app logos as main page -->
+            <a href="https://bugcrowd.com/h/SecurityIQResearcher" target="_blank">
+                <img src="https://www.bugcrowd.com/wp-content/themes/bugcrowd/images/logo.svg" class="social-icon" alt="Bugcrowd">
+            </a>
+            
+            <a href="https://x.com/iqresearcher" target="_blank">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            
+            <a href="https://github.com/securityiqresearcher" target="_blank">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            
+            <a href="https://hackerone.com/securityiqresearcher" target="_blank">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.2 18c-.6 0-1.2-.6-1.2-1.2V7.2C6 6.6 6.6 6 7.2 6h9.6c.6 0 1.2.6 1.2 1.2v9.6c0 .6-.6 1.2-1.2 1.2H7.2z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Matrix background effect - SAME AS MAIN PAGE
+        const matrixBg = document.getElementById('matrixBg');
+        const chars = '01';
+        const fontSize = 14;
+        const columns = Math.floor(window.innerWidth / fontSize);
+        
+        let drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * -100);
+        }
+
+        function drawMatrix() {
+            const ctx = matrixBg.getContext('2d');
+            matrixBg.width = window.innerWidth;
+            matrixBg.height = window.innerHeight;
+            
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.04)';
+            ctx.fillRect(0, 0, matrixBg.width, matrixBg.height);
+            
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > matrixBg.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        // Initialize matrix
+        matrixBg.width = window.innerWidth;
+        matrixBg.height = window.innerHeight;
+        setInterval(drawMatrix, 33);
+    </script>
 </body>
 </html>
