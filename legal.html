@@ -3,10 +3,33 @@
 <head>
     <title>Legal - Security IQ Researcher</title>
     <style>
-        body { background-color: black; color: white; font-family: Arial; margin: 40px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { color: #aaa; }
-        a { color: #ccc; }
+        body { 
+            background-color: black; 
+            color: white; 
+            font-family: Arial, sans-serif; 
+            margin: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container { 
+            max-width: 600px; 
+            text-align: center;
+        }
+        h1 { color: #aaa; font-size: 2em; }
+        p { font-size: 1.2em; line-height: 1.5; }
+        .contact {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+        .email {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        a { color: #ccc; text-decoration: none; font-size: 0.8em; }
     </style>
 </head>
 <body>
@@ -14,7 +37,15 @@
         <h1>Legal Disclaimer</h1>
         <p>This website is for educational and informational purposes only.</p>
         <p>All security research is conducted ethically and with proper authorization.</p>
-        <p><a href="index.html">← Back to Home</a></p>
+        
+        <div class="contact">
+            <h3>Legal & Security Contact</h3>
+            <p>Email: <span class="email">legal@securityiqresearcher.com</span></p>
+            <p>For responsible disclosure and legal inquiries</p>
+        </div>
+        
+        <br>
+        <a href="index.html">← Back to Home</a>
     </div>
 </body>
 </html>
