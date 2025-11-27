@@ -12,55 +12,62 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            position: relative;
+            perspective: 1000px;
             overflow: hidden;
         }
         
         .main-text {
             font-size: 3em;
             text-align: center;
-            z-index: 2;
+            z-index: 10;
             position: relative;
         }
         
-        .orbit-ring {
+        .earth-sphere {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: rotate 30s linear infinite;
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            animation: rotate3d 40s infinite linear;
         }
         
         .vulnerability {
             position: absolute;
-            font-size: 0.7em;
+            font-size: 0.6em;
             color: rgba(255, 255, 255, 0.5);
             font-weight: 100;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             white-space: nowrap;
-            top: 0;
-            left: 50%;
-            transform-origin: 50% 300px;
+            transform-origin: center;
+            backface-visibility: hidden;
         }
         
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg) rotateX(10deg); }
+            100% { transform: rotateY(360deg) rotateX(10deg); }
         }
         
         .privacy-link {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 0.3em;
-            color: #666;
-            z-index: 3;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.8em; /* BIGGER */
+            color: #aaa; /* LIGHTER COLOR */
+            z-index: 11;
+            padding: 8px 16px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
         }
         
         a {
-            color: #666;
+            color: #aaa;
             text-decoration: none;
+            font-weight: normal;
+        }
+        
+        a:hover {
+            color: #fff;
         }
     </style>
 </head>
@@ -69,8 +76,8 @@
         Hello World :), SecurityIQResearcher!
     </div>
     
-    <div class="orbit-ring" id="orbitRing">
-        <!-- Vulnerabilities will be positioned here -->
+    <div class="earth-sphere" id="earthSphere">
+        <!-- 3D vulnerabilities will be positioned here -->
     </div>
     
     <div class="privacy-link">
@@ -82,7 +89,7 @@
             "Assetlinks Exposure",
             "GH Actions Secrets", 
             "Permissive CORS Misconfiguration",
-            "CAPTCHA Bypass", 
+            "CAPTCHA Bypass",
             "GraphQL Info Leak",
             "Session Fixation",
             "WP User Enum",
@@ -90,17 +97,26 @@
             "DOM XSS innerHTML"
         ];
         
-        const orbit = document.getElementById('orbitRing');
+        const sphere = document.getElementById('earthSphere');
+        const radius = 200;
         
+        // Distribute vulnerabilities in 3D sphere coordinates
         vulnerabilities.forEach((vuln, index) => {
-            const angle = (index / vulnerabilities.length) * 360;
+            // Spherical coordinates
+            const phi = Math.acos(-1 + (2 * index) / vulnerabilities.length);
+            const theta = Math.sqrt(vulnerabilities.length * Math.PI) * phi;
+            
+            // Convert to Cartesian coordinates
+            const x = radius * Math.sin(phi) * Math.cos(theta);
+            const y = radius * Math.sin(phi) * Math.sin(theta);
+            const z = radius * Math.cos(phi);
             
             const vulnElement = document.createElement('div');
             vulnElement.className = 'vulnerability';
             vulnElement.textContent = vuln;
-            vulnElement.style.transform = `rotate(${angle}deg)`;
+            vulnElement.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
             
-            orbit.appendChild(vulnElement);
+            sphere.appendChild(vulnElement);
         });
     </script>
 </body>
