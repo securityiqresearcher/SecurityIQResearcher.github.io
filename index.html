@@ -12,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            perspective: 1000px;
+            perspective: 1200px;
             overflow: hidden;
         }
         
@@ -23,36 +23,49 @@
             position: relative;
         }
         
+        .earth-container {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            transform-style: preserve-3d;
+            animation: rotateEarth 25s infinite linear;
+        }
+        
         .earth-sphere {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #1a5276, #0e2a47 70%);
+            box-shadow: 
+                inset 0 0 50px rgba(255,255,255,0.2),
+                0 0 60px rgba(66, 133, 244, 0.3);
             transform-style: preserve-3d;
-            animation: rotate3d 40s infinite linear;
         }
         
         .vulnerability {
             position: absolute;
             font-size: 0.6em;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6);
             font-weight: 100;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             white-space: nowrap;
             transform-origin: center;
-            backface-visibility: hidden;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
+            pointer-events: none;
         }
         
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg) rotateX(10deg); }
-            100% { transform: rotateY(360deg) rotateX(10deg); }
+        @keyframes rotateEarth {
+            0% { transform: rotateY(0deg) rotateX(15deg); }
+            100% { transform: rotateY(360deg) rotateX(15deg); }
         }
         
         .privacy-link {
             position: absolute;
             bottom: 30px;
             right: 30px;
-            font-size: 0.8em; /* BIGGER */
-            color: #aaa; /* LIGHTER COLOR */
+            font-size: 0.8em;
+            color: #aaa;
             z-index: 11;
             padding: 8px 16px;
             border: 1px solid #444;
@@ -76,8 +89,10 @@
         Hello World :), SecurityIQResearcher!
     </div>
     
-    <div class="earth-sphere" id="earthSphere">
-        <!-- 3D vulnerabilities will be positioned here -->
+    <div class="earth-container">
+        <div class="earth-sphere" id="earthSphere">
+            <!-- 3D Earth with vulnerabilities -->
+        </div>
     </div>
     
     <div class="privacy-link">
@@ -98,15 +113,15 @@
         ];
         
         const sphere = document.getElementById('earthSphere');
-        const radius = 200;
+        const radius = 200; // Earth radius
         
-        // Distribute vulnerabilities in 3D sphere coordinates
+        // Create realistic Earth-like distribution
         vulnerabilities.forEach((vuln, index) => {
-            // Spherical coordinates
-            const phi = Math.acos(-1 + (2 * index) / vulnerabilities.length);
-            const theta = Math.sqrt(vulnerabilities.length * Math.PI) * phi;
+            // Fibonacci sphere distribution for even spacing
+            const phi = Math.acos(1 - 2 * (index + 0.5) / vulnerabilities.length);
+            const theta = Math.PI * (1 + Math.sqrt(5)) * index;
             
-            // Convert to Cartesian coordinates
+            // Convert to 3D coordinates
             const x = radius * Math.sin(phi) * Math.cos(theta);
             const y = radius * Math.sin(phi) * Math.sin(theta);
             const z = radius * Math.cos(phi);
@@ -116,8 +131,24 @@
             vulnElement.textContent = vuln;
             vulnElement.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
             
+            // Adjust text rotation to face outward
+            const textRotationX = Math.atan2(y, Math.sqrt(x*x + z*z)) * (180/Math.PI);
+            const textRotationY = Math.atan2(x, z) * (180/Math.PI);
+            vulnElement.style.transform += ` rotateX(${-textRotationX}deg) rotateY(${textRotationY}deg)`;
+            
             sphere.appendChild(vulnElement);
         });
+
+        // Add cloud effect
+        const clouds = document.createElement('div');
+        clouds.style.position = 'absolute';
+        clouds.style.width = '420px';
+        clouds.style.height = '420px';
+        clouds.style.borderRadius = '50%';
+        clouds.style.background = 'radial-gradient(circle at 40% 40%, rgba(255,255,255,0.1) 0%, transparent 50%)';
+        clouds.style.animation = 'rotateEarth 30s infinite linear reverse';
+        clouds.style.filter = 'blur(2px)';
+        sphere.appendChild(clouds);
     </script>
 </body>
 </html>
