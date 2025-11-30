@@ -74,50 +74,62 @@
             padding: 30px;
         }
 
-        /* Mission Statement Section */
-        .mission-section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(0, 255, 65, 0.05);
-            border-left: 3px solid #00ff41;
-        }
+/* Universal Mobile Responsiveness */
+@media (max-width: 480px) {
+    .terminal {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .command-line {
+        flex-wrap: wrap;
+    }
+    
+    .status-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    /* Fix text sizing for mobile */
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .section-title {
+        font-size: 1.1em;
+    }
+}
 
-        .mission-title {
-            color: #00ff41;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .mission-text {
-            color: #cccccc;
-            line-height: 1.6;
-            font-size: 1.1em;
-        }
-
-        .command-line {
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
-        }
-
-        .prompt {
-            color: #00ff41;
-            margin-right: 10px;
-        }
-
-        .command {
-            color: #ffffff;
-        }
-
-        .vulnerability-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-        }
-
+@media (max-width: 768px) {
+    .terminal {
+        margin: 15px;
+        padding: 20px;
+    }
+    
+    .skills-grid,
+    .quick-contact,
+    .rights-grid,
+    .availability-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .vulnerability-grid {
+        grid-template-columns: 1fr;
+    }
+}
         .vuln-card {
             background: rgba(0, 255, 65, 0.05);
             border: 1px solid #00ff41;
