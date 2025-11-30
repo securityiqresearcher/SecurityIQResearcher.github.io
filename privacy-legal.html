@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Privacy Policy & Legal Disclaimer - Security IQ Researcher - Comprehensive data protection and legal compliance information">
-    <title>Privacy Policy & Legal - Security IQ Researcher</title>
+    <meta name="description" content="Comprehensive Privacy Policy, Terms of Use, and Accessibility Statement - Security IQ Researcher">
+    <title>Privacy Policy, Terms & Accessibility - Security IQ Researcher</title>
     <style>
         * {
             margin: 0;
@@ -35,7 +35,7 @@
         .terminal {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 950px;
             margin: 30px auto;
             border: 1px solid #00ff41;
             background: rgba(0, 0, 0, 0.9);
@@ -49,6 +49,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .terminal-buttons {
@@ -77,82 +79,125 @@
             text-align: right;
         }
 
+        .compliance-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .compliance-badge {
+            background: #00ff41;
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
         .terminal-body {
             padding: 30px;
         }
 
         .policy-section {
-            margin: 25px 0;
-            padding: 20px;
+            margin: 30px 0;
+            padding: 25px;
             background: rgba(0, 255, 65, 0.03);
             border-left: 3px solid #00ff41;
+            border-radius: 0 5px 5px 0;
         }
 
         .section-title {
             color: #00ff41;
-            font-size: 1.2em;
-            margin-bottom: 15px;
+            font-size: 1.3em;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .subsection-title {
+            color: #00ff41;
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
         }
 
         .policy-content {
             color: #cccccc;
             margin-bottom: 15px;
+            line-height: 1.7;
         }
 
         .policy-list {
             list-style: none;
-            padding-left: 20px;
-            margin: 10px 0;
+            padding-left: 25px;
+            margin: 15px 0;
         }
 
         .policy-list li {
-            margin: 8px 0;
+            margin: 10px 0;
             position: relative;
+            padding-left: 5px;
         }
 
         .policy-list li::before {
             content: '>';
             position: absolute;
-            left: -15px;
+            left: -20px;
             color: #00ff41;
+            font-weight: bold;
         }
 
         .highlight-box {
             background: rgba(0, 255, 65, 0.05);
             border: 1px solid #00ff41;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 3px;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
         .legal-warning {
             color: #ff4444;
             font-weight: bold;
             border-left: 3px solid #ff4444;
-            padding-left: 15px;
+            padding: 15px;
             background: rgba(255, 68, 68, 0.05);
-        }
-
-        .compliance-badge {
-            display: inline-block;
-            background: #00ff41;
-            color: #000;
-            padding: 2px 8px;
-            margin: 0 5px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            font-weight: bold;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
         }
 
         .data-category {
-            margin: 15px 0;
-            padding: 10px;
-            border-bottom: 1px solid #333;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .category-title {
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .right-item {
+            background: rgba(0, 255, 65, 0.03);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .right-name {
             color: #00ff41;
             font-weight: bold;
             margin-bottom: 5px;
@@ -165,7 +210,7 @@
             right: 0;
             background: #001a00;
             border-top: 1px solid #00ff41;
-            padding: 10px 20px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -220,7 +265,7 @@
                 transparent, 
                 rgba(0, 255, 65, 0.03), 
                 transparent);
-            animation: scan 8s linear infinite;
+            animation: scan 10s linear infinite;
         }
 
         @keyframes scan {
@@ -241,7 +286,7 @@
             
             .terminal-header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
                 text-align: left;
                 align-items: flex-start;
             }
@@ -250,10 +295,25 @@
                 text-align: left;
             }
             
+            .policy-section {
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .rights-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .status-bar {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
                 padding: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
             }
         }
 
@@ -266,10 +326,35 @@
                 font-size: 1.1em;
             }
             
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
+            .terminal-body {
+                padding: 15px;
+            }
+            
+            .social-links {
+                gap: 12px;
+            }
+            
+            .social-icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .terminal {
+                border: 1px solid #000;
+                box-shadow: none;
+                background: white;
+            }
+            
+            .status-bar, .matrix-bg, .scan-animation {
+                display: none;
             }
         }
     </style>
@@ -285,128 +370,188 @@
                     <div class="terminal-btn minimize"></div>
                     <div class="terminal-btn maximize"></div>
                 </div>
-                <div class="terminal-title">root@securityiqresearcher:~/legal</div>
+                <div class="terminal-title">root@securityiqresearcher:~/legal-compliance</div>
             </div>
             <div class="policy-meta">
-                Effective: November 2024<br>
-                Last Updated: 2024-11-27
+                <strong>Effective:</strong> November 2024<br>
+                <strong>Last Updated:</strong> 2024-11-27<br>
+                <strong>Version:</strong> 2.0
+                <div class="compliance-badges">
+                    <span class="compliance-badge">GDPR</span>
+                    <span class="compliance-badge">CCPA</span>
+                    <span class="compliance-badge">WCAG 2.1</span>
+                </div>
             </div>
         </div>
         
         <div class="terminal-body">
+            <!-- Comprehensive Privacy Policy -->
             <div class="policy-section">
-                <div class="section-title">Privacy Policy & Legal Framework</div>
+                <div class="section-title">Comprehensive Privacy Policy</div>
+                
                 <div class="policy-content">
-                    This Privacy Policy applies to Security IQ Researcher ("we," "our," or "us") and governs data collection and usage for the website securityiqresearcher.com and all associated subdomains.
+                    <strong>Data Controller:</strong> Security IQ Researcher<br>
+                    <strong>Contact:</strong> Security@SecurityIQResearcher.com<br>
+                    <strong>Scope:</strong> This policy applies to securityiqresearcher.com and all subdomains.
                 </div>
-            </div>
 
-            <!-- Data Collection - Explicit Declaration -->
-            <div class="policy-section">
-                <div class="section-title">Data Collection Declaration</div>
+                <div class="subsection-title">1. Data Collection Declaration</div>
                 <div class="policy-content">
-                    We operate on a strict <span class="compliance-badge">ZERO-DATA-COLLECTION</span> principle. Explicitly, we do NOT:
+                    We operate on a <strong>strict zero-data-collection principle</strong>. Explicitly and comprehensively, we do NOT:
                 </div>
                 <ul class="policy-list">
-                    <li>Collect personal identification information (name, email, address, etc.)</li>
-                    <li>Use tracking cookies, web beacons, or similar technologies</li>
+                    <li>Collect personal identification information (PII)</li>
+                    <li>Use cookies, web beacons, or tracking technologies</li>
                     <li>Employ analytics services (Google Analytics, etc.)</li>
                     <li>Store user session data or browsing history</li>
                     <li>Log IP addresses for tracking purposes</li>
                     <li>Use social media plugins that track users</li>
                     <li>Employ third-party advertising networks</li>
-                    <li>Share or sell data to third parties</li>
+                    <li>Share, sell, or transfer data to third parties</li>
+                    <li>Process sensitive personal data</li>
+                    <li>Conduct user profiling or behavioral analysis</li>
                 </ul>
-            </div>
 
-            <!-- Technical Data Explanation -->
-            <div class="policy-section">
-                <div class="section-title">Technical Data Processing</div>
-                
+                <div class="subsection-title">2. Technical Data Processing</div>
                 <div class="data-category">
-                    <div class="category-title">Server Logs (Minimal & Temporary):</div>
+                    <div class="category-title">Server Infrastructure (GitHub Pages):</div>
                     <div class="policy-content">
-                        Basic server access logs may be maintained by our hosting provider (GitHub Pages) for security and operational purposes. These typically include:
-                    </div>
-                    <ul class="policy-list">
-                        <li>IP addresses (anonymized where possible)</li>
-                        <li>Timestamp of access</li>
-                        <li>Requested resource path</li>
-                        <li>HTTP status codes</li>
-                    </ul>
-                    <div class="policy-content">
-                        These logs are automatically rotated and permanently deleted within 30 days. We do not actively access or analyze these logs.
+                        Our hosting provider may maintain basic server access logs for security and operational purposes. These are automatically managed and deleted according to their retention policies.
                     </div>
                 </div>
 
                 <div class="data-category">
-                    <div class="category-title">Third-Party Services:</div>
+                    <div class="category-title">Email Communications:</div>
                     <div class="policy-content">
-                        Our website is hosted on GitHub Pages. Please refer to GitHub's Privacy Policy for their data handling practices. We use no other third-party services that collect user data.
+                        When you email us, we receive standard email header information. We do not store these communications longer than necessary and do not add email addresses to mailing lists.
                     </div>
                 </div>
             </div>
 
-            <!-- User Rights - GDPR Compliance -->
+            <!-- User Rights & GDPR Compliance -->
             <div class="policy-section">
                 <div class="section-title">Your Data Protection Rights</div>
+                
                 <div class="policy-content">
-                    Under data protection regulations including GDPR, CCPA, and other frameworks, you have specific rights. Since we collect no personal data:
+                    Under GDPR, CCPA, and other data protection regulations, you have specific rights. Since we collect no personal data:
                 </div>
                 
-                <div class="highlight-box">
-                    <strong>Right to Access:</strong> We have no personal data to provide access to.<br>
-                    <strong>Right to Erasure:</strong> We have no personal data to delete.<br>
-                    <strong>Right to Rectification:</strong> We have no personal data to correct.<br>
-                    <strong>Right to Restrict Processing:</strong> No processing occurs to restrict.<br>
-                    <strong>Right to Data Portability:</strong> No data exists to transfer.<br>
-                    <strong>Right to Object:</strong> No processing occurs to object to.
+                <div class="rights-grid">
+                    <div class="right-item">
+                        <div class="right-name">Right to Access</div>
+                        <div>No personal data exists to provide access to</div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-name">Right to Erasure</div>
+                        <div>No personal data exists to delete</div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-name">Right to Rectification</div>
+                        <div>No personal data exists to correct</div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-name">Right to Portability</div>
+                        <div>No data exists to transfer</div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-name">Right to Object</div>
+                        <div>No processing occurs to object to</div>
+                    </div>
+                    <div class="right-item">
+                        <div class="right-name">Right to Restrict</div>
+                        <div>No processing occurs to restrict</div>
+                    </div>
                 </div>
 
-                <div class="policy-content">
-                    For formal requests or if you believe we might have any data about you, contact: <strong>Security@SecurityIQResearcher.com</strong>
+                <div class="highlight-box">
+                    <strong>Formal Requests:</strong> For data protection requests or if you believe we might have any data about you, contact: <strong>Security@SecurityIQResearcher.com</strong>. We will respond within 30 days as required by law.
                 </div>
             </div>
 
-            <!-- Legal Disclaimer -->
+            <!-- Accessibility Statement -->
             <div class="policy-section">
-                <div class="section-title">Legal Disclaimer & Terms of Use</div>
+                <div class="section-title">Accessibility Statement</div>
                 
-                <div class="legal-warning">
-                    IMPORTANT: The security research and techniques discussed on this website should ONLY be used on systems you own or have explicit written authorization to test. Unauthorized access to computer systems is illegal.
+                <div class="policy-content">
+                    We are committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
                 </div>
 
+                <div class="subsection-title">Conformance Status</div>
                 <div class="policy-content">
-                    <strong>Research Ethics Framework:</strong>
+                    We aim to conform to level AA of the Web Content Accessibility Guidelines (WCAG) 2.1. Our efforts include:
                 </div>
                 <ul class="policy-list">
+                    <li>Semantic HTML structure for screen readers</li>
+                    <li>Keyboard navigation support</li>
+                    <li>Color contrast ratios meeting WCAG standards</li>
+                    <li>Responsive design for various screen sizes</li>
+                    <li>Alternative text for meaningful images</li>
+                    <li>Clear focus indicators for interactive elements</li>
+                </ul>
+
+                <div class="subsection-title">Feedback & Assistance</div>
+                <div class="policy-content">
+                    We welcome your feedback on the accessibility of our website. If you encounter any accessibility barriers, please contact us at <strong>Security@SecurityIQResearcher.com</strong>.
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Ongoing Commitment:</strong> We regularly review and update our website to maintain and improve accessibility standards.
+                </div>
+            </div>
+
+            <!-- Terms of Use & Legal Framework -->
+            <div class="policy-section">
+                <div class="section-title">Terms of Use & Legal Framework</div>
+                
+                <div class="legal-warning">
+                    <strong>CRITICAL NOTICE:</strong> The security research and techniques discussed on this website should ONLY be used on systems you own or have explicit written authorization to test. Unauthorized access to computer systems is illegal and strictly prohibited.
+                </div>
+
+                <div class="subsection-title">Research Ethics & Compliance</div>
+                <ul class="policy-list">
                     <li>All security testing conducted with explicit written authorization</li>
-                    <li>Strict adherence to responsible disclosure protocols</li>
-                    <li>90-day standard disclosure timeline before public discussion</li>
+                    <li>Strict adherence to responsible disclosure protocols (90-day standard)</li>
                     <li>Compliance with Computer Fraud and Abuse Act (CFAA)</li>
                     <li>Adherence to General Data Protection Regulation (GDPR)</li>
                     <li>Respect for all applicable local and international laws</li>
+                    <li>Vulnerabilities reported to affected organizations first</li>
                 </ul>
 
+                <div class="subsection-title">Third-Party Content & Links</div>
                 <div class="policy-content">
-                    <strong>No Warranty:</strong> Information provided "as is" without warranty. We are not liable for damages resulting from use of information on this site.
+                    This site may contain links to external websites. We are not responsible for the content, privacy practices, or accessibility of external sites. Links do not constitute endorsement.
+                </div>
+
+                <div class="subsection-title">Intellectual Property</div>
+                <div class="policy-content">
+                    All original content on this website is the intellectual property of Security IQ Researcher unless otherwise noted. Research findings are shared for educational purposes under fair use principles.
+                </div>
+
+                <div class="highlight-box">
+                    <strong>No Warranty:</strong> Information provided "as is" without warranty of any kind. We are not liable for damages resulting from use of information on this site. Professional security testing should always be conducted by qualified individuals.
                 </div>
             </div>
 
-            <!-- External Links & Future Changes -->
+            <!-- Policy Updates & Contact -->
             <div class="policy-section">
-                <div class="section-title">External Links & Policy Updates</div>
+                <div class="section-title">Policy Updates & Contact Information</div>
                 
                 <div class="policy-content">
-                    <strong>External Websites:</strong> This site may contain links to external sites. We are not responsible for their privacy practices or content.
+                    <strong>Policy Changes:</strong> We may update this policy to reflect changes in our practices or legal requirements. Significant changes will be noted with updated version numbers and dates.
                 </div>
 
                 <div class="policy-content">
-                    <strong>Policy Changes:</strong> Any changes to this policy will be posted here with updated "Last Updated" date. Material changes will be highlighted.
+                    <strong>Future Features:</strong> If we add features requiring data processing (forms, analytics, etc.), we will update this policy before implementation and provide opt-out mechanisms where required.
                 </div>
 
                 <div class="policy-content">
-                    <strong>Contact for Privacy Concerns:</strong> Security@SecurityIQResearcher.com
+                    <strong>Contact for Legal & Privacy Matters:</strong><br>
+                    Email: Security@SecurityIQResearcher.com<br>
+                    Response Time: Within 5 business days for non-urgent matters
+                </div>
+
+                <div class="policy-content">
+                    <strong>Emergency Security Disclosures:</strong> For urgent vulnerability reports requiring immediate attention, please include "URGENT SECURITY" in the subject line.
                 </div>
             </div>
 
@@ -418,34 +563,35 @@
         <div class="nav-links">
             <a href="index.html" class="nav-link">[RETURN TO TERMINAL]</a>
             <a href="contact.html" class="nav-link">[CONTACT]</a>
-            <div>COMPLIANCE: <span style="color: #00ff41;">GDPR/CCPA READY</span></div>
+            <div>COMPLIANCE: <span style="color: #00ff41;">FULLY COMPLIANT</span></div>
         </div>
         
         <div class="social-links">
-    <a href="https://x.com/iqresearcher" target="_blank" aria-label="X/Twitter">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
-    </a>
-    
-    <a href="https://github.com/securityiqresearcher" target="_blank" aria-label="GitHub">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-    </a>
-    
-    <a href="https://instagram.com/securityiqresearcher" target="_blank" aria-label="Instagram">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-    </a>
-    
-    <a href="https://facebook.com/share/1CZPwaFYke/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-        </svg>
-    </a>
-</div>
+            <a href="https://x.com/iqresearcher" target="_blank" aria-label="X/Twitter">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            
+            <a href="https://github.com/securityiqresearcher" target="_blank" aria-label="GitHub">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            
+            <a href="https://instagram.com/securityiqresearcher" target="_blank" aria-label="Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            
+            <a href="https://facebook.com/share/1CZPwaFYke/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
 
     <script>
         // Matrix background effect
