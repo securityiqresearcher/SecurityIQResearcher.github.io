@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Security IQ Researcher</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Security IQ Researcher - Independent security research, vulnerability disclosures, and responsible disclosure practices">
+    <title>Security IQ Researcher - Cybersecurity Research & Vulnerability Disclosure</title>
     <style>
         * {
             margin: 0;
@@ -13,13 +16,13 @@
             background: #0a0a0a;
             color: #00ff41;
             font-family: 'Courier New', monospace;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: auto;
             position: relative;
         }
 
         .matrix-bg {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -31,16 +34,16 @@
         .terminal {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 900px;
+            margin: 30px auto;
             border: 1px solid #00ff41;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
         }
 
         .terminal-header {
             background: #001a00;
-            padding: 10px;
+            padding: 12px;
             border-bottom: 1px solid #00ff41;
             display: flex;
             align-items: center;
@@ -69,13 +72,34 @@
 
         .terminal-body {
             padding: 30px;
-            min-height: 400px;
+        }
+
+        /* Mission Statement Section */
+        .mission-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 3px solid #00ff41;
+        }
+
+        .mission-title {
+            color: #00ff41;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mission-text {
+            color: #cccccc;
+            line-height: 1.6;
+            font-size: 1.1em;
         }
 
         .command-line {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin: 15px 0;
         }
 
         .prompt {
@@ -85,74 +109,74 @@
 
         .command {
             color: #ffffff;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
         }
 
         .vulnerability-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
-            margin-top: 30px;
+            margin: 25px 0;
         }
 
         .vuln-card {
             background: rgba(0, 255, 65, 0.05);
             border: 1px solid #00ff41;
-            padding: 15px;
+            padding: 18px;
             position: relative;
-            overflow: hidden;
             transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
         }
 
         .vuln-card:hover {
             background: rgba(0, 255, 65, 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
         }
 
         .vuln-card::before {
             content: '>';
             position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 15px;
             color: #00ff41;
-            opacity: 0.5;
+            opacity: 0.7;
         }
 
         .vuln-name {
-            margin-left: 20px;
-            font-size: 0.9em;
+            margin-left: 25px;
+            font-size: 0.95em;
+            color: #ffffff;
         }
 
         .status-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #001a00;
-    border-top: 1px solid #00ff41;
-    padding: 8px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8em;
-    z-index: 1000; /* ADD THIS LINE - Higher z-index */
-}
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #001a00;
+            border-top: 1px solid #00ff41;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8em;
+            z-index: 1000;
+        }
 
-        .privacy-link {
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
             color: #00ff41;
             text-decoration: none;
             transition: color 0.3s ease;
-            margin-right: 20px;
+            font-size: 0.9em;
         }
 
-        .privacy-link:hover {
+        .nav-link:hover {
             color: #ffffff;
             text-decoration: underline;
         }
@@ -164,8 +188,8 @@
         }
 
         .social-icon {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
             transition: all 0.3s ease;
             opacity: 0.7;
@@ -174,7 +198,6 @@
         .social-icon:hover {
             opacity: 1;
             transform: scale(1.2);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
         }
 
         .scan-animation {
@@ -185,9 +208,9 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent, 
-                rgba(0, 255, 65, 0.1), 
+                rgba(0, 255, 65, 0.05), 
                 transparent);
-            animation: scan 4s linear infinite;
+            animation: scan 6s linear infinite;
         }
 
         @keyframes scan {
@@ -195,39 +218,49 @@
             100% { left: 100%; }
         }
 
-        .glitch-text {
-            position: relative;
-            animation: glitch 5s infinite;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terminal {
+                margin: 15px;
+                max-width: none;
+            }
+            
+            .terminal-body {
+                padding: 20px;
+            }
+            
+            .vulnerability-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .social-links {
+                gap: 12px;
+            }
         }
 
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-        }
-
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid #00ff41;
-            white-space: nowrap;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #00ff41 }
-        }
-
-        .status-left {
-            display: flex;
-            gap: 30px;
+        @media (max-width: 480px) {
+            .mission-text {
+                font-size: 1em;
+            }
+            
+            .vuln-name {
+                font-size: 0.9em;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -245,18 +278,28 @@
         </div>
         
         <div class="terminal-body">
+            <!-- Clear Mission Statement -->
+            <div class="mission-section">
+                <div class="mission-title">Independent Security Research</div>
+                <div class="mission-text">
+                    Identifying and responsibly disclosing security vulnerabilities to help organizations 
+                    strengthen their digital defenses. Specializing in web application security, 
+                    mobile security, and vulnerability research.
+                </div>
+            </div>
+
             <div class="command-line">
                 <span class="prompt">$</span>
-                <span class="command typewriter">whoami</span>
+                <span class="command">whoami</span>
             </div>
             
-            <div class="glitch-text" style="font-size: 1.5em; margin-bottom: 20px;">
-                SecurityIQResearcher@root:~# Weaponizing Security Oversights
+            <div style="font-size: 1.4em; margin: 15px 0; color: #ffffff;">
+                SecurityIQResearcher - Weaponizing Security Oversights
             </div>
             
             <div class="command-line">
                 <span class="prompt">$</span>
-                <span class="command" style="animation-delay: 1s;">active_vulnerabilities --list</span>
+                <span class="command">active_vulnerabilities --list</span>
             </div>
             
             <div class="vulnerability-grid">
@@ -297,95 +340,83 @@
     </div>
     
     <div class="status-bar">
-        <div class="status-left">
+        <div class="nav-links">
+            <a href="contact.html" class="nav-link">[CONTACT]</a>
+            <a href="privacy-legal.html" class="nav-link">[PRIVACY & LEGAL]</a>
             <div>STATUS: <span style="color: #00ff41;">ACTIVE</span></div>
-            <div>CONNECTION: <span style="color: #00ff41;">SECURE</span></div>
         </div>
         
-       <div class="social-links">
-    <a href="contact.html" class="privacy-link">[CONTACT]</a>
-    <a href="privacy-legal.html" class="privacy-link">[PRIVACY & LEGAL]</a>
-    
-    <a href="https://x.com/iqresearcher" target="_blank">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
-    </a>
-    
-    <a href="https://github.com/securityiqresearcher" target="_blank">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-    </a>
-    
-    <a href="https://instagram.com/securityiqresearcher" target="_blank">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-    </a>
-    
-    <a href="https://facebook.com/share/1CZPwaFYke/?mibextid=wwXIfr" target="_blank">
-        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-        </svg>
-    </a>
-</div>
+        <div class="social-links">
+            <a href="https://x.com/iqresearcher" target="_blank" aria-label="X/Twitter">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            
+            <a href="https://github.com/securityiqresearcher" target="_blank" aria-label="GitHub">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            
+            <a href="https://instagram.com/securityiqresearcher" target="_blank" aria-label="Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            
+            <a href="https://facebook.com/share/1CZPwaFYke/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
 
     <script>
         // Matrix background effect
         const matrixBg = document.getElementById('matrixBg');
         const chars = '01';
         const fontSize = 14;
-        const columns = Math.floor(window.innerWidth / fontSize);
         
-        let drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.floor(Math.random() * -100);
-        }
+        function initMatrix() {
+            const columns = Math.floor(window.innerWidth / fontSize);
+            let drops = [];
+            
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.floor(Math.random() * -100);
+            }
 
-        function drawMatrix() {
-            const ctx = matrixBg.getContext('2d');
+            function drawMatrix() {
+                const ctx = matrixBg.getContext('2d');
+                matrixBg.width = window.innerWidth;
+                matrixBg.height = window.innerHeight;
+                
+                ctx.fillStyle = 'rgba(10, 10, 10, 0.04)';
+                ctx.fillRect(0, 0, matrixBg.width, matrixBg.height);
+                
+                ctx.fillStyle = '#00ff41';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > matrixBg.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
             matrixBg.width = window.innerWidth;
             matrixBg.height = window.innerHeight;
-            
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.04)';
-            ctx.fillRect(0, 0, matrixBg.width, matrixBg.height);
-            
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if (drops[i] * fontSize > matrixBg.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
+            setInterval(drawMatrix, 33);
         }
 
-        // Initialize matrix
-        matrixBg.width = window.innerWidth;
-        matrixBg.height = window.innerHeight;
-        setInterval(drawMatrix, 33);
-
-        // Add terminal commands animation
-        const commands = [
-            "scan --target *.myshopify.com",
-            "exploit --vulnerability captcha_bypass",
-            "report --severity high",
-            "clear"
-        ];
-
-        let commandIndex = 0;
-        setInterval(() => {
-            const commandElement = document.querySelector('.command-line:last-child .command');
-            if (commandElement) {
-                commandElement.textContent = commands[commandIndex];
-                commandIndex = (commandIndex + 1) % commands.length;
-            }
-        }, 3000);
+        // Initialize on load and resize
+        window.addEventListener('load', initMatrix);
+        window.addEventListener('resize', initMatrix);
     </script>
 </body>
 </html>
