@@ -3,639 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Comprehensive Privacy Policy, Terms of Use, and Accessibility Statement - Security IQ Researcher">
-    <title>Privacy Policy, Terms & Accessibility - Security IQ Researcher</title>
+    <title>Privacy & Legal | SecurityIQResearcher</title>
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background: #0a0a0a;
+            margin: 0;
+            font-family: "Courier New", monospace;
+            background-color: #0d0d0d;
             color: #00ff41;
-            font-family: 'Courier New', monospace;
-            min-height: 100vh;
-            overflow-x: auto;
-            position: relative;
-            line-height: 1.6;
         }
 
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
+        header {
             width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .terminal {
-            position: relative;
-            z-index: 2;
-            max-width: 950px;
-            margin: 30px auto;
-            border: 1px solid #00ff41;
-            background: rgba(0, 0, 0, 0.9);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-        }
-
-        .terminal-header {
-            background: #001a00;
-            padding: 12px;
-            border-bottom: 1px solid #00ff41;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .terminal-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .close { background: #ff5f56; }
-        .minimize { background: #ffbd2e; }
-        .maximize { background: #27ca3f; }
-
-        .terminal-title {
-            color: #00ff41;
-            font-size: 0.9em;
-        }
-
-        .policy-meta {
-            color: #888;
-            font-size: 0.8em;
-            text-align: right;
-        }
-
-        .compliance-badges {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 5px;
-        }
-
-        .compliance-badge {
-            background: #00ff41;
-            color: #000;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 0.7em;
-            font-weight: bold;
-        }
-
-        .terminal-body {
-            padding: 30px;
-        }
-
-        .policy-section {
-            margin: 30px 0;
-            padding: 25px;
-            background: rgba(0, 255, 65, 0.03);
-            border-left: 3px solid #00ff41;
-            border-radius: 0 5px 5px 0;
-        }
-
-        .section-title {
-            color: #00ff41;
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-        }
-
-        .subsection-title {
-            color: #00ff41;
-            font-size: 1.1em;
-            margin: 20px 0 10px 0;
-            font-weight: bold;
-        }
-
-        .policy-content {
-            color: #cccccc;
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-
-        .policy-list {
-            list-style: none;
-            padding-left: 25px;
-            margin: 15px 0;
-        }
-
-        .policy-list li {
-            margin: 10px 0;
-            position: relative;
-            padding-left: 5px;
-        }
-
-        .policy-list li::before {
-            content: '>';
-            position: absolute;
-            left: -20px;
-            color: #00ff41;
-            font-weight: bold;
-        }
-
-        .highlight-box {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid #00ff41;
             padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
+            background-color: #000;
+            border-bottom: 2px solid #00ff41;
         }
 
-        .legal-warning {
-            color: #ff4444;
-            font-weight: bold;
-            border-left: 3px solid #ff4444;
-            padding: 15px;
-            background: rgba(255, 68, 68, 0.05);
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
-        }
-
-        .data-category {
-            margin: 20px 0;
-            padding: 15px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .category-title {
-            color: #00ff41;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
-        .rights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .right-item {
-            background: rgba(0, 255, 65, 0.03);
-            border: 1px solid #333;
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        .right-name {
-            color: #00ff41;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .status-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #001a00;
-            border-top: 1px solid #00ff41;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8em;
-            z-index: 1000;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-link {
+        nav a {
             color: #00ff41;
             text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.9em;
+            margin-right: 20px;
+            font-size: 18px;
         }
 
-        .nav-link:hover {
-            color: #ffffff;
-            text-decoration: underline;
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #000;
+            border: 1px solid #00ff41;
+            border-radius: 8px;
+            box-shadow: 0 0 15px #00ff41;
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-            align-items: center;
+        h1, h2, h3 {
+            color: #00ff41;
         }
 
-        .social-icon {
-            width: 22px;
-            height: 22px;
-            filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
-            transition: all 0.3s ease;
-            opacity: 0.7;
+        p, li {
+            line-height: 1.6;
+            font-size: 16px;
         }
 
-        .social-icon:hover {
-            opacity: 1;
-            transform: scale(1.2);
+        ul {
+            padding-left: 20px;
         }
 
-        .scan-animation {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(0, 255, 65, 0.03), 
-                transparent);
-            animation: scan 10s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .terminal {
-                margin: 15px;
-                max-width: none;
-            }
-            
-            .terminal-body {
-                padding: 20px;
-            }
-            
-            .terminal-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: left;
-                align-items: flex-start;
-            }
-            
-            .policy-meta {
-                text-align: left;
-            }
-            
-            .policy-section {
-                padding: 20px;
-                margin: 20px 0;
-            }
-            
-            .rights-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .status-bar {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .policy-section {
-                padding: 15px;
-            }
-            
-            .section-title {
-                font-size: 1.1em;
-            }
-            
-            .terminal-body {
-                padding: 15px;
-            }
-            
-            .social-links {
-                gap: 12px;
-            }
-            
-            .social-icon {
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-                color: black;
-            }
-            
-            .terminal {
-                border: 1px solid #000;
-                box-shadow: none;
-                background: white;
-            }
-            
-            .status-bar, .matrix-bg, .scan-animation {
-                display: none;
-            }
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #00ff41;
+            color: #00ff41;
         }
     </style>
 </head>
+
 <body>
-    <canvas class="matrix-bg" id="matrixBg"></canvas>
-    
-    <div class="terminal">
-        <div class="terminal-header">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div class="terminal-buttons">
-                    <div class="terminal-btn close"></div>
-                    <div class="terminal-btn minimize"></div>
-                    <div class="terminal-btn maximize"></div>
-                </div>
-                <div class="terminal-title">root@securityiqresearcher:~/legal-compliance</div>
-            </div>
-            <div class="policy-meta">
-                <strong>Effective:</strong> November 2025<br>
-                <strong>Last Updated:</strong> 11-30-2025<br>
-                <strong>Version:</strong> 2.0
-                <div class="compliance-badges">
-                    <span class="compliance-badge">GDPR</span>
-                    <span class="compliance-badge">CCPA</span>
-                    <span class="compliance-badge">WCAG 2.1</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="terminal-body">
-            <!-- Comprehensive Privacy Policy -->
-            <div class="policy-section">
-                <div class="section-title">Comprehensive Privacy Policy</div>
-                
-                <div class="policy-content">
-                    <strong>Data Controller:</strong> Security IQ Researcher<br>
-                    <strong>Contact:</strong> Security@SecurityIQResearcher.com<br>
-                    <strong>Scope:</strong> This policy applies to securityiqresearcher.com and all subdomains.
-                </div>
 
-                <div class="subsection-title">1. Data Collection Declaration</div>
-                <div class="policy-content">
-                    We operate on a <strong>strict zero-data-collection principle</strong>. Explicitly and comprehensively, we do NOT:
-                </div>
-                <ul class="policy-list">
-                    <li>Collect personal identification information (PII)</li>
-                    <li>Use cookies, web beacons, or tracking technologies</li>
-                    <li>Employ analytics services (Google Analytics, etc.)</li>
-                    <li>Store user session data or browsing history</li>
-                    <li>Log IP addresses for tracking purposes</li>
-                    <li>Use social media plugins that track users</li>
-                    <li>Employ third-party advertising networks</li>
-                    <li>Share, sell, or transfer data to third parties</li>
-                    <li>Process sensitive personal data</li>
-                    <li>Conduct user profiling or behavioral analysis</li>
-                </ul>
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="privacy-legal.html">Privacy & Legal</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-                <div class="subsection-title">2. Technical Data Processing</div>
-                <div class="data-category">
-                    <div class="category-title">Server Infrastructure (GitHub Pages):</div>
-                    <div class="policy-content">
-                        Our hosting provider may maintain basic server access logs for security and operational purposes. These are automatically managed and deleted according to their retention policies.
-                    </div>
-                </div>
+<div class="container">
+    <h1>Privacy & Legal Notice</h1>
+    <p><strong>Last Updated:</strong> February 2025</p>
+    <p>This site is operated by SecurityIQResearcher (“I”, “me”, or “the operator”). This page explains the privacy practices, legal limitations, disclaimers, and the intended use of information shared on this website.</p>
 
-                <div class="data-category">
-                    <div class="category-title">Email Communications:</div>
-                    <div class="policy-content">
-                        When you email us, we receive standard email header information. We do not store these communications longer than necessary and do not add email addresses to mailing lists.
-                    </div>
-                </div>
-            </div>
+    <h2>1. Data Collected</h2>
+    <p>This website does <strong>not</strong> collect personal information unless you explicitly submit it through the contact form. I do not use analytics, cookies, trackers, ads, or any third-party behavioral monitoring tools.</p>
 
-            <!-- User Rights & GDPR Compliance -->
-            <div class="policy-section">
-                <div class="section-title">Your Data Protection Rights</div>
-                
-                <div class="policy-content">
-                    Under GDPR, CCPA, and other data protection regulations, you have specific rights. Since we collect no personal data:
-                </div>
-                
-                <div class="rights-grid">
-                    <div class="right-item">
-                        <div class="right-name">Right to Access</div>
-                        <div>No personal data exists to provide access to</div>
-                    </div>
-                    <div class="right-item">
-                        <div class="right-name">Right to Erasure</div>
-                        <div>No personal data exists to delete</div>
-                    </div>
-                    <div class="right-item">
-                        <div class="right-name">Right to Rectification</div>
-                        <div>No personal data exists to correct</div>
-                    </div>
-                    <div class="right-item">
-                        <div class="right-name">Right to Portability</div>
-                        <div>No data exists to transfer</div>
-                    </div>
-                    <div class="right-item">
-                        <div class="right-name">Right to Object</div>
-                        <div>No processing occurs to object to</div>
-                    </div>
-                    <div class="right-item">
-                        <div class="right-name">Right to Restrict</div>
-                        <div>No processing occurs to restrict</div>
-                    </div>
-                </div>
+    <h3>Voluntary Submission</h3>
+    <p>If you use the contact form, the information you provide (name, email, message) will be used solely for communication regarding your inquiry.</p>
 
-                <div class="highlight-box">
-                    <strong>Formal Requests:</strong> For data protection requests or if you believe we might have any data about you, contact: <strong>Security@SecurityIQResearcher.com</strong>. We will respond within 30 days as required by law.
-                </div>
-            </div>
+    <h3>Server Logs</h3>
+    <p>The hosting provider may automatically record non-personal data such as:</p>
+    <ul>
+        <li>IP address (for security + anti-abuse only)</li>
+        <li>Browser type</li>
+        <li>Basic request logs</li>
+    </ul>
+    <p>This information is standard and used only for security, diagnostics, and monitoring service stability.</p>
 
-            <!-- Accessibility Statement -->
-            <div class="policy-section">
-                <div class="section-title">Accessibility Statement</div>
-                
-                <div class="policy-content">
-                    We are committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
-                </div>
+    <h2>2. Security Research Content</h2>
+    <p>All content on this website is for <strong>educational and lawful security research</strong>. Nothing posted here should be used for exploitation, unauthorized access, or malicious activity.</p>
 
-                <div class="subsection-title">Conformance Status</div>
-                <div class="policy-content">
-                    We aim to conform to level AA of the Web Content Accessibility Guidelines (WCAG) 2.1. Our efforts include:
-                </div>
-                <ul class="policy-list">
-                    <li>Semantic HTML structure for screen readers</li>
-                    <li>Keyboard navigation support</li>
-                    <li>Color contrast ratios meeting WCAG standards</li>
-                    <li>Responsive design for various screen sizes</li>
-                    <li>Alternative text for meaningful images</li>
-                    <li>Clear focus indicators for interactive elements</li>
-                </ul>
+    <p>Any real-world vulnerabilities shown have been responsibly disclosed following coordinated disclosure guidelines.</p>
 
-                <div class="subsection-title">Feedback & Assistance</div>
-                <div class="policy-content">
-                    We welcome your feedback on the accessibility of our website. If you encounter any accessibility barriers, please contact us at <strong>Security@SecurityIQResearcher.com</strong>.
-                </div>
+    <h2>3. No Legal or Professional Advice</h2>
+    <p>Nothing on this website should be interpreted as legal advice, cybersecurity instructions for attack, or professional consulting. All information is provided "as-is" for learning purposes only.</p>
 
-                <div class="highlight-box">
-                    <strong>Ongoing Commitment:</strong> We regularly review and update our website to maintain and improve accessibility standards.
-                </div>
-            </div>
+    <h2>4. External Links</h2>
+    <p>This site may contain links to external resources. I am not responsible for the content, privacy practices, or security policies of any third-party websites.</p>
 
-            <!-- Terms of Use & Legal Framework -->
-            <div class="policy-section">
-                <div class="section-title">Terms of Use & Legal Framework</div>
-                
-                <div class="legal-warning">
-                    <strong>CRITICAL NOTICE:</strong> The security research and techniques discussed on this website should ONLY be used on systems you own or have explicit written authorization to test. Unauthorized access to computer systems is illegal and strictly prohibited.
-                </div>
+    <h2>5. Liability Limitations</h2>
+    <p>By using this site, you agree that:</p>
+    <ul>
+        <li>You are responsible for how you interpret and use the information.</li>
+        <li>The operator is not liable for damages, misuse, or consequences arising from content on this website.</li>
+        <li>All content is provided without warranties of any kind.</li>
+    </ul>
 
-                <div class="subsection-title">Research Ethics & Compliance</div>
-                <ul class="policy-list">
-                    <li>All security testing conducted with explicit written authorization</li>
-                    <li>Strict adherence to responsible disclosure protocols (90-day standard)</li>
-                    <li>Compliance with Computer Fraud and Abuse Act (CFAA)</li>
-                    <li>Adherence to General Data Protection Regulation (GDPR)</li>
-                    <li>Respect for all applicable local and international laws</li>
-                    <li>Vulnerabilities reported to affected organizations first</li>
-                </ul>
+    <h2>6. Contact</h2>
+    <p>If you have questions about this Privacy & Legal Notice, visit the Contact page.</p>
+</div>
 
-                <div class="subsection-title">Third-Party Content & Links</div>
-                <div class="policy-content">
-                    This site may contain links to external websites. We are not responsible for the content, privacy practices, or accessibility of external sites. Links do not constitute endorsement.
-                </div>
+<footer>
+    © 2025 SecurityIQResearcher — Educational Cybersecurity Research
+</footer>
 
-                <div class="subsection-title">Intellectual Property</div>
-                <div class="policy-content">
-                    All original content on this website is the intellectual property of Security IQ Researcher unless otherwise noted. Research findings are shared for educational purposes under fair use principles.
-                </div>
-
-                <div class="highlight-box">
-                    <strong>No Warranty:</strong> Information provided "as is" without warranty of any kind. We are not liable for damages resulting from use of information on this site. Professional security testing should always be conducted by qualified individuals.
-                </div>
-            </div>
-
-            <!-- Policy Updates & Contact -->
-            <div class="policy-section">
-                <div class="section-title">Policy Updates & Contact Information</div>
-                
-                <div class="policy-content">
-                    <strong>Policy Changes:</strong> We may update this policy to reflect changes in our practices or legal requirements. Significant changes will be noted with updated version numbers and dates.
-                </div>
-
-                <div class="policy-content">
-                    <strong>Future Features:</strong> If we add features requiring data processing (forms, analytics, etc.), we will update this policy before implementation and provide opt-out mechanisms where required.
-                </div>
-
-                <div class="policy-content">
-                    <strong>Contact for Legal & Privacy Matters:</strong><br>
-                    Email: Security@SecurityIQResearcher.com<br>
-                    Response Time: Within 5 business days for non-urgent matters
-                </div>
-
-                <div class="policy-content">
-                    <strong>Emergency Security Disclosures:</strong> For urgent vulnerability reports requiring immediate attention, please include "URGENT SECURITY" in the subject line.
-                </div>
-            </div>
-
-            <div class="scan-animation"></div>
-        </div>
-    </div>
-    
-    <div class="status-bar">
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">[RETURN TO TERMINAL]</a>
-            <a href="contact.html" class="nav-link">[CONTACT]</a>
-            <div>COMPLIANCE: <span style="color: #00ff41;">FULLY COMPLIANT</span></div>
-        </div>
-        
-        <div class="social-links">
-            <a href="https://x.com/iqresearcher" target="_blank" aria-label="X/Twitter">
-                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-            </a>
-            
-            <a href="https://github.com/securityiqresearcher" target="_blank" aria-label="GitHub">
-                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-            
-            <a href="https://instagram.com/securityiqresearcher" target="_blank" aria-label="Instagram">
-                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-            
-            <a href="https://facebook.com/share/1CZPwaFYke/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        // Matrix background effect
-        const matrixBg = document.getElementById('matrixBg');
-        const chars = '01';
-        const fontSize = 14;
-        
-        function initMatrix() {
-            const columns = Math.floor(window.innerWidth / fontSize);
-            let drops = [];
-            
-            for (let i = 0; i < columns; i++) {
-                drops[i] = Math.floor(Math.random() * -100);
-            }
-
-            function drawMatrix() {
-                const ctx = matrixBg.getContext('2d');
-                matrixBg.width = window.innerWidth;
-                matrixBg.height = window.innerHeight;
-                
-                ctx.fillStyle = 'rgba(10, 10, 10, 0.04)';
-                ctx.fillRect(0, 0, matrixBg.width, matrixBg.height);
-                
-                ctx.fillStyle = '#00ff41';
-                ctx.font = fontSize + 'px monospace';
-                
-                for (let i = 0; i < drops.length; i++) {
-                    const text = chars[Math.floor(Math.random() * chars.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    
-                    if (drops[i] * fontSize > matrixBg.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-
-            matrixBg.width = window.innerWidth;
-            matrixBg.height = window.innerHeight;
-            setInterval(drawMatrix, 33);
-        }
-
-        window.addEventListener('load', initMatrix);
-        window.addEventListener('resize', initMatrix);
-    </script>
 </body>
 </html>
