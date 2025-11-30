@@ -13,26 +13,46 @@
         }
 
         .terminal {
-            max-width: 600px;
+            max-width: 700px;
             margin: 50px auto;
             border: 1px solid #00ff41;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
         }
 
         .command-line {
-            margin: 20px 0;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
         }
 
         .prompt {
             color: #00ff41;
+            margin-right: 10px;
+        }
+
+        .contact-section {
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid #00ff41;
+            background: rgba(0, 255, 65, 0.05);
+        }
+
+        .contact-type {
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
 
         .contact-email {
             color: #00ff41;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.1em;
+            display: block;
+            margin: 10px 0;
         }
 
         .contact-email:hover {
@@ -40,49 +60,101 @@
             text-decoration: underline;
         }
 
-        .note {
+        .contact-desc {
+            color: #cccccc;
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .response-info {
             color: #888;
             font-size: 0.9em;
-            margin-top: 30px;
+            margin-top: 10px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
         }
 
-        .back-link {
-            color: #666;
-            text-decoration: none;
-            margin-top: 40px;
-            display: inline-block;
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #001a00;
+            border-top: 1px solid #00ff41;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
         }
 
-        .back-link:hover {
+        .nav-link {
             color: #00ff41;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .urgency-badge {
+            background: #ff4444;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7em;
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
     <div class="terminal">
         <div class="command-line">
-            <span class="prompt">$</span> whoami
+            <span class="prompt">$</span> contact --secure-channels
         </div>
-        <div>securityiqresearcher</div>
+
+        <div style="font-size: 1.3em; margin: 20px 0; color: #ffffff;">
+            SecurityIQResearcher Contact Channels
+        </div>
+
+        <!-- Primary Contact -->
+        <div class="contact-section">
+            <div class="contact-type">Primary Contact</div>
+            <a href="mailto:Security@SecurityIQResearcher.com" class="contact-email">
+                Security@SecurityIQResearcher.com
+            </a>
+            <div class="contact-desc">For research collaboration, vulnerability reports, and general inquiries</div>
+            <div class="response-info">Response: 24-48 hours • PGP available</div>
+        </div>
+
+        <!-- Emergency Security -->
+        <div class="contact-section">
+            <div class="contact-type">Critical Security Issues</div>
+            <a href="mailto:Security@SecurityIQResearcher.com?subject=URGENT: Critical Security Issue" class="contact-email">
+                Security@SecurityIQResearcher.com
+            </a>
+            <div class="contact-desc">For time-sensitive security matters requiring immediate attention</div>
+            <div class="response-info">Response: 2-6 hours <span class="urgency-badge">EMERGENCY ONLY</span></div>
+        </div>
+
+        <!-- Social Channels -->
+        <div class="contact-section">
+            <div class="contact-type">Social Channels</div>
+            <div class="contact-desc">
+                X: <a href="https://x.com/iqresearcher" style="color: #00ff41;">@iqresearcher</a> | 
+                GitHub: <a href="https://github.com/securityiqresearcher" style="color: #00ff41;">securityiqresearcher</a>
+            </div>
+            <div class="response-info">DMs open for quick questions • Response: 48-72 hours</div>
+        </div>
 
         <div class="command-line">
-            <span class="prompt">$</span> contact --method
+            <span class="prompt">$</span> echo "Encrypted communication preferred for sensitive matters"
         </div>
-        <div>
-            Email: <a href="mailto:Security@SecurityIQResearcher.com" class="contact-email">Security@SecurityIQResearcher.com</a>
-        </div>
+    </div>
 
-        <div class="command-line">
-            <span class="prompt">$</span> echo "For research collab, vuln reports, or just to say hi"
-        </div>
-
-        <div class="note">
-            // Response time: When I'm not hacking things<br>
-            // PGP available if you're paranoid<br>
-            // Don't spam, I have better things to do
-        </div>
-
-        <a href="index.html" class="back-link">[cd ..]</a>
+    <div class="status-bar">
+        <a href="index.html" class="nav-link">[RETURN TO TERMINAL]</a>
+        <div>STATUS: <span style="color: #00ff41;">CONTACT ACTIVE</span></div>
     </div>
 </body>
 </html>
